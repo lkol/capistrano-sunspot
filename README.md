@@ -36,7 +36,7 @@ Require capistrano sunspot :
 
 ```ruby
 # Capfile
-require 'capistrano/capistrano-sunspot'
+require 'capistrano/sunspot'
 ```
 
 
