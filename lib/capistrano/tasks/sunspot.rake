@@ -3,7 +3,7 @@ module Capistrano
   end
 end
 
-namespace :solr do
+namespace :sunspot do
 
   desc "start solr sunspot server"
   task :start do
@@ -47,7 +47,7 @@ namespace :solr do
   desc "start & reindex and stop solr and start again  ( for manual use )"
   task :restart do
     on roles(:app), in: :sequence, wait: 3 do
-      %w[stop start reindex].each { |task| invoke "solr:#{stop}" }
+      %w[stop start reindex].each { |task| invoke "sunspot:#{task}" }
     end
   end
 
