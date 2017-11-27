@@ -47,7 +47,7 @@ namespace :sunspot do
   desc "start & reindex and stop solr and start again  ( for manual use )"
   task :restart do
     on roles(:app), in: :sequence, wait: 3 do
-      %w[stop start reindex].each { |task| invoke "sunspot:#{task}" }
+      %w[stop start].each { |task| invoke "sunspot:#{task}" }
     end
   end
 
