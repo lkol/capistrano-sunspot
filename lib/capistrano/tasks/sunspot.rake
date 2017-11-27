@@ -26,7 +26,6 @@ namespace :sunspot do
           rescue Exception => e
             puts "No pid is running"
           end
-          execute "rm -rf #{current_path}/solr"
         end
       end
      execute "ps -ef | grep solr | grep -v grep | awk '{print $2}' | xargs kill || echo 'no process with name solr found'"
@@ -44,7 +43,7 @@ namespace :sunspot do
     end
   end
 
-  desc "start & reindex and stop solr and start again  ( for manual use )"
+  desc "restart solr"
   task :restart do
     on roles(:app), in: :sequence, wait: 3 do
       %w[stop start].each { |task| invoke "sunspot:#{task}" }
